@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Prediction</title>
+    <meta charset="UTF-8">
+        <!-- favicon -->
+        <!-- <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"> -->
+        <!-- <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon"> -->
+        <link rel="icon" type="image/JPG" sizes="16x16" href="/assets/img/favicon-32x32.png">
+        <!-- bootstrap css cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+        <!-- css stylesheet -->
+        <link rel="stylesheet" href="static/css/style.css">
+        <!-- font styles cdn -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+<!--          .container-->
+<!--          {-->
+<!--            background-color: lightblue;-->
+<!--          }-->
+<!--          .our-focus -->
+<!--          {-->
+<!--            background-color: lightblue;-->
+<!--          }-->
+<!--          .site-footer-->
+<!--          {-->
+<!--            background-color: lightblue;-->
+<!--          }-->
+
+<!--          .container-fluid{-->
+<!--            background-color:lightblue;-->
+<!--            width: 100%;-->
+<!--          }-->
+<!--          body{-->
+<!--            background-color:lightblue;-->
+<!--            -->
+<!--          }-->
+<!--          .navbar{-->
+<!--            background-color:lightblue;-->
+<!--          }-->
+<!--        -->
+<!--        #img{-->
+<!--          width:89.7%;-->
+<!--          height: 435px;-->
+<!--          float: center;-->
+<!--          margin-left: 5.6%;-->
+<!--          background-color: rgb(116, 81, 107);-->
+<!--        }-->
+        </style>
+
+
+</head>
+<body  >
+        <!-- bootstrap navbar -->
+       <!-- bootstrap navbar -->
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="homepage">PerMan</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto"style>
+          <li class="nav-item">
+              <a class="nav-link" href="homepage">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+              {% for school in schools %}
+              <a class="nav-link" id="donate" href="{{school.key}}">EarthQuakes</a>
+              {% endfor %}
+      </li>
+          <li class="nav-item">
+              <a class="nav-link" id="sponsor" href="cyclone">Cyclone</a>
+      </li>
+          <li class="nav-item">
+              <a class="nav-link" id="sponsor" href="flood">Flood</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" id="sponsor" href="contactus">Contact Us</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+
+<div>
+
+
+
+          <!-- navbar ends -->
+       <!-- what we focus on -->
+       <h2 class="text-center mt-3" style="font-size:50px;color:black;text-shadow: 10px 10px 20px blue">Flood Prediction <br/><br/></h2>
+       <div class="mnopk" style=" width:100%;height:50%; text-align:center">
+
+
+
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="/y_predicttt" method="post">
+
+
+    	<input style="width:35%; border: none; border-bottom: 2px solid red; " type="text"  name="location" id="location" placeholder="Enter the location" required />
+    	<input style="width:35%;  border: none; border-bottom: 2px solid red; " type="text"  name="annual" id="annual" placeholder="Enter the Annual Rainfall" required />
+    	<input style="width:35%;  border: none; border-bottom: 2px solid red; " type="text"  name="jan" id="jan" placeholder="Enter the Jan-May Rainfall" required />
+    	<input style="width:35%;  border: none; border-bottom: 2px solid red; " type="text"  name="jun" id="jun" placeholder="Enter the Jun-Dec Rainfall" required />
+
+		</select>
+        <button style="width:20%;margin-top:10px;margin-left:40%" type="submit" class="btn btn-primary btn-block btn-large">Click here</button>
+
+    </form>
+
+   <br>
+   <br><h2 style="color:red; font-size:25px ;">
+   <mark1  >{{ prediction_text }}
+ </div>
+
+       </div>
+
+
+
+
+
+
+
+
+        <section class="our-focus">
+          <div class="container">
+
+
+
+                  <div class="card" style="width: 30rem;height: 10rem;margin-left: -180px;margin-top: 10px;text-align:center">
+
+                    <div class="card-body">
+                      <h5 class="card-title">Temperature</h5>
+                      <p class="card-text" style="font-size:40px;color:blue">{{temp}}
+                          </p>
+                    </div>
+                  </div>
+                </div>
+
+                  <div class="card" style="width: 30rem;height: 10rem;margin-left: 32rem;margin-top: -160px;text-align:center ">
+
+                    <div class="card-body">
+                      <h5 class="card-title" >Maximum Temperature</h5>
+                      <p class="card-text" style="font-size:40px;color:blue">{{maxt}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+               <div class="card" style="width: 30rem;height: 10rem;margin-left: 63rem;margin-top: -160px;text-align:center">
+
+                    <div class="card-body">
+                      <h5 class="card-title" >Windspeed (mph)</h5>
+                      <p class="card-text" style="font-size:40px;color:blue">{{wspd}}
+                          </p>
+                    </div>
+                  </div>
+                </div>
+
+                  <div class="card" style="width: 30rem;height: 10rem;margin-left: 25px;margin-top: 10px;text-align:center ">
+
+                    <div class="card-body">
+                      <h5 class="card-title">Cloud Cover (%)</h5>
+                      <p class="card-text" style="font-size:40px;color:blue">{{cloudcover}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+               <div class="card" style="width: 30rem;height: 10rem;margin-left: 32rem;margin-top: -160px;text-align:center">
+
+                    <div class="card-body">
+                      <h5 class="card-title">Precipitation (mm)</h5>
+                      <p class="card-text" style="font-size:40px;color:blue">{{percip}}</p>
+                    </div>
+                  </div>
+                </div>
+
+                  <div class="card" style="width: 30rem;height: 10rem;margin-left: 63rem;margin-top: -164.3px;text-align:center ">
+
+                    <div class="card-body">
+                      <h5 class="card-title">Humidity (%)</h5>
+                      <p class="card-text" style="font-size:40px;color:blue">{{humidity}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </section>
+          <!-- focus section ends -->
+
+       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+          </body>
+</html>
